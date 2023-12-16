@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: (linear-gradient(to left, #2d8fe5, #d155b8));
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .App-logo {
@@ -9,26 +12,74 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+     animation: App-logo-spin infinite 1ms reverse; 
+     /* animation-duration: 0.5s; */
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url('./spiral.png');
+  border-image: url(./spiral.png) 290 round;
+  background-repeat:round;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: blueviolet;
 }
 img {
   border-radius: 60%;
+  box-shadow: 0 0 8px 8px white inset;
+  backdrop-filter: blur(7px);
+;
 }
 
 .App-link {
-  color: #61dafb;
+  color: orangered;
+}
+.container {
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+  padding: 12px;
+}
+.stepA {
+  margin: 12px;
+  padding: 12px;
+  border-color:chartreuse;
+  border-style:dotted;
+  border-width: 8px;
+  
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+.stepB {
+  margin: 12px;
+  padding: 12px;
+  border-style:dotted;
+  border-width: 8px;
+  border-color: yellow;
+  font-family: 'Brush Script MT', cursive;
+}
+.stepC {
+  margin: 12px;
+  padding: 12px;
+  border-style:double;
+  border-width: 8px;
+  border-color: yellow;
+  font-family: Copperplate, Papyrus, fantasy;
+}
+.stepD {
+  margin: 12px;
+  padding: 12px;
+  border-style:double;
+  border-width: 6px;
+  border-color: royalblue;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
