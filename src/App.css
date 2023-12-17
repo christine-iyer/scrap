@@ -6,33 +6,31 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-     animation: App-logo-spin infinite 1ms reverse; 
-     /* animation-duration: 0.5s; */
+     animation: App-logo-spin infinite 1s reverse; 
+     animation-duration: 0.5s;
   }
 }
 
 .App-header {
-  background-image: url('./spiral.png');
-  border-image: url(./spiral.png) 290 round;
+  /* background-image: url('./cheers.jpeg'); */
+  border-image: url('./cheers.jpeg') 19 round;
   background-repeat:round;
-  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: blueviolet;
 }
 img {
-  border-radius: 60%;
-  box-shadow: 0 0 8px 8px white inset;
+  border-radius: 40%;
+  box-shadow: 0 0 0px 8px white inset;
   backdrop-filter: blur(7px);
 ;
 }
