@@ -111,3 +111,9 @@ import { ProgressBar, Step } from "react-step-progress-bar";
 };
 ```
 4. Each step component, which takes in the **onButtonClick** defined in the App.js file, which brings the user to the next question.
+
+
+### React Bootstrap Progress Bar
+
+[Progress bar link](https://react-bootstrap.netlify.app/docs/components/progress/)
+ This seems considerably easier, so maybe a great place to start. 
