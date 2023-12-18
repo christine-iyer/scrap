@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+If I want to add a progress bar to my image-gallery app, the first step is to go through the files and iso
+late the functions that do this, nothing else.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+import MultiStepProgressBar from './components/MultiStepProgressBar'
+```
 
-## Available Scripts
+```
+const [ question, setQuestion ] = useState('questiona')
+const nextQuestion = (question) => {
+     setQuestion(question)
+}
+const nextStep =(step)=> {
+     switch(step){
+          case "1":
+          setQuestion('questiona);
+          break;
+          case "2":
+          setQuestion('questionb);
+          break;
+          case "3":
+          setQuestion('questionc);
+          break;
+          case "4":
+          alert('make sure you completed all fields')
+          setPage('questiond');
+          break;
+          default: 
+          setQuestion('1')
+     }
+}
 
-In the project directory, you can run:
+// also within the header is the progress bar 
+// component, which takes in where you are at and where you go next when you activate the app
+        <MultiStepProgressBar question={question} onQuestionNumberClick ={nextStep} />
+```
 
-### `npm start`
+### Multi Step Progress Bar using the npm package **react-step-progress-bar** 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. import *ProgressBar & Step* from react-step-progress-bar.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Create a progress bar component called **MultiStepProgressBar** that takes **question & onQuestionNumberClick** from App.js setting percentages of progress based on the number of questions answered, meaning the more questions answered, the closer to complete the user is, hence, more progress. 
 
-### `npm test`
+3. Next, and still within the **MultiStepProgressBar** return the imported **ProgressBar and Step** components. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It looks like this...
 
-### `npm run build`
+```
+import React from "react";
+import "./MultiStepProgressBar.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ MultiStepProgressBar = ({ question, onQuestionNumberClick }) => {
+  var stepPercentage = 0;
+  if (question === "questiona") {
+    stepPercentage = 16;
+  } else if (question === "questionb") {
+    stepPercentage = 49.5;
+  } else if (question === "questionc") {
+    stepPercentage = 82.5;
+  } else if (question === "questiond") {
+    stepPercentage = 100;
+  } else {
+    stepPercentage = 0;
+  }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return (
+    <ProgressBar percent={stepPercentage}>
+      <Step>
+        {({ accomplished, index }) => (
+          <div
+            className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            onClick={() => onQuestionNumberClick("1")}
+          >
+            {index + 1}
+          </div>
+        )}
+      </Step>
+      <Step>
+        {({ accomplished, index }) => (
+          <div
+            className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            onClick={() => onQuestionNumberClick("2")}
+          >
+            {index + 1}
+          </div>
+        )}
+      </Step>
+      <Step>
+        {({ accomplished, index }) => (
+          <div
+            className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            onClick={() => onQuestionNumberClick("3")}
+          >
+            {index + 1}
+          </div>
+        )}
+      </Step>
+      <Step>
+        {({ accomplished, index }) => (
+          <div
+            className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            onClick={() => onQuestionNumberClick("4")}
+          >
+            {index + 1}
+          </div>
+        )}
+      </Step>
+    </ProgressBar>
+  );
+};
+```
+4. Each step component, which takes in the **onButtonClick** defined in the App.js file, which brings the user to the next question.

@@ -1,18 +1,20 @@
-
 import React from "react";
 import tick from "../moon.jpeg";
+import '../App.css'
 export default function StepD ()  {
 
 return (
       <div
         className="mw5 bg-white pa2-ns mt5 dib"
-        style={{ maxWidth: "3%", maxHeight:'3%' }}
+        // style={{ maxWidth: "3%", maxHeight:'3%' }}
       >
         <img
           src={tick}
           className="h3 w3"
           title="success icon"
           alt="tick-icon"
+          // style={{ maxWidth: "53%", maxHeight:'43%' }}
+
         />
         <div className="center"><h3 className="">Congratulations, Eren!</h3></div>
         <p style={{ color: "#C0C0C0" }}>

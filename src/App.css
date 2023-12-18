@@ -32,7 +32,9 @@ img {
   border-radius: 40%;
   box-shadow: 0 0 0px 8px white inset;
   backdrop-filter: blur(7px);
-;
+  max-width: 150%;
+max-height: 150%
+
 }
 
 .App-link {

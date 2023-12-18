@@ -25,7 +25,7 @@ function App() {
             break;
             case "4":
               alert('make sure you filled out the right fields')
-              // setPage('stepd');
+              setPage('stepd');
               break;
               default:
                 setPage('1')
